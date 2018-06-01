@@ -1,5 +1,14 @@
 <template>
   <div>
+    <div id="app">
+      <h1>Bitcoin Price Index</h1>
+      <div v-for="currency in info" class="currency" v-bind:key="currency.id">
+        {{ currency.description }}:
+        <span class="lighten">
+          <span v-html="currency.symbol"></span>{{ currency.rate_float }}
+        </span>
+      </div>
+    </div>
     <p> {{ JSON.stringify(response) }} </p>
   </div>
 </template>
@@ -10,6 +19,7 @@ export default {
   data () {
     return {
       response: '',
+      info: [],
     }
   },
   mounted () {
@@ -18,6 +28,7 @@ export default {
       .then(response => {
         console.log(response);
         this.response = response;
+        this.info = response.data.bpi;
       })
   }
 }
