@@ -7,6 +7,7 @@ import KaylaComponent from '@/components/KaylaComponent'
 import RyanComponent from '@/components/RyanComponent'
 
 Vue.use(Router)
+window.axios = require('axios')
 
 export default new Router({
   routes: [
